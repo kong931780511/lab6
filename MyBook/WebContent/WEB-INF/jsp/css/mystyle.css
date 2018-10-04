@@ -1,0 +1,35 @@
+h1 {
+    color: red;
+    text-transform: uppercase;
+}
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover{
+  background-color: red;
+}
+
+.h5 {
+	align: center;
+	backgrorund-color: gray;
+}
+.h4 {
+	align: center;
+	backgrorund-color: gray;
+}
+
