@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="edu.osu.cse5234.model.*" %>
+    pageEncoding="UTF-8" import="edu.osu.cse5234.model.*,edu.osu.cse5234.business.view.Item" %>
 <!DOCTYPE html>
 <html>
 <head>
