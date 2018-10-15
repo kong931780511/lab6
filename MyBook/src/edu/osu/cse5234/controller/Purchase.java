@@ -14,6 +14,7 @@ import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.model.ShippingInfo;
+import edu.osu.cse5234.util.ServiceLocator;
 
 @Controller
 @RequestMapping("/purchase")
@@ -22,21 +23,19 @@ public class Purchase {
 	public String viewOrderEntryForm(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 			Order order = new Order();
-			ArrayList<Item> items = new ArrayList<>();
-			items.add(new Item("CPP", "80", "0"));
-			items.add(new Item("Python", "70", "0"));
-			items.add(new Item("Java", "60", "0"));
-			items.add(new Item("JS", "20", "0"));
-			items.add(new Item("HTML", "10", "0"));
-			order.setItems(items);
-			request.setAttribute("order", order);
+			order.setItems(ServiceLocator.getInventoryService().getAvailableInventory().getItems());
 			return "OrderEntryForm";
 	}
 
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		request.getSession().setAttribute("order", order);
-		return "redirect:/purchase/paymentEntry";
+		if(ServiceLocator.getOrderProcessingService().validateItemAvailability(order)) {
+			request.getSession().setAttribute("order", order);
+			return "redirect:/purchase/paymentEntry";
+		} else {
+			return "redirect:/purchase";
+		}
+		
 	}
 	
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
@@ -69,7 +68,8 @@ public class Purchase {
 	}
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request) {
-//		request.getSession().setAttribute("shippingInfo", shippingInfo);
+		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder((Order)request.getSession().getAttribute("order"));
+		request.getSession().setAttribute("confirmNum", confirmNum);
 		return "redirect:/purchase/viewConfirmation";
 	}
 	@RequestMapping(path="/viewConfirmation",method=RequestMethod.GET)

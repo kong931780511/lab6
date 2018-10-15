@@ -3,8 +3,6 @@
 	<name>MyBook-InventoryManagement-EJBEAR</name>
 	<comment></comment>
 	<projects>
-		<project>MyBook-InventoryManagement-EJB</project>
-		<project>MyBook-InventoryManagement-EJBClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
