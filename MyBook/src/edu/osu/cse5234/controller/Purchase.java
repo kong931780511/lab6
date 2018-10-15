@@ -39,6 +39,7 @@ public class Purchase {
 			request.getSession().setAttribute("order", order);
 			return "redirect:/purchase/paymentEntry";
 		} else {
+			request.getSession().setAttribute("ItemAvailabilityMsg", "Please resubmit quantities");
 			return "redirect:/purchase";
 		}
 		
@@ -80,8 +81,6 @@ public class Purchase {
 	}
 	@RequestMapping(path="/viewConfirmation",method=RequestMethod.GET)
 	public String viewConfirmation(HttpServletRequest request) {
-		int num = new Random().nextInt(1000000);
-		request.getSession().setAttribute("confirmNum", num+"");
 		return "Confirmation";
 	}
 }

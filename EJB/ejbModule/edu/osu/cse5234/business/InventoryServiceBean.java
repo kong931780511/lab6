@@ -7,12 +7,14 @@ import edu.osu.cse5234.business.view.Item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 /**
  * Session Bean implementation class InventoryServiceBean
  */
 @Stateless
+@Remote(InventoryService.class)
 public class InventoryServiceBean implements InventoryService {
 
     /**
