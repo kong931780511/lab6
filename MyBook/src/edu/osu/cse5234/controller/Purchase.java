@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
@@ -23,7 +24,12 @@ public class Purchase {
 	public String viewOrderEntryForm(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 			Order order = new Order();
-			order.setItems(ServiceLocator.getInventoryService().getAvailableInventory().getItems());
+			Inventory inventory = ServiceLocator.InventoryService().getAvailableInventory();
+			for (Item item:inventory.getItems()) {
+				order.addItems(item);
+			}
+			//order.setItems(order);
+			request.setAttribute("order", order);
 			return "OrderEntryForm";
 	}
 

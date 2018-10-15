@@ -17,8 +17,8 @@ public class Inventory implements Serializable{
 		return items;
 	}
 
-	public void setItems(ArrayList<Item> items) {
-		this.items = items;
+	public void addItem(Item item) {
+		items.add(item);
 	}
 	
 	

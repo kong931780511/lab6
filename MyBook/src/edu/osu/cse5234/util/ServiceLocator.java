@@ -12,14 +12,13 @@ public class ServiceLocator {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static InventoryService getInventoryService() {
+	public static InventoryService InventoryService() {
 		try {
 	         return (InventoryService) InitialContext.doLookup(
-	        		 "java:global/MyBook-InventoryManagement-EJBEAR/MyBook-InventoryManagement-EJBClient/InventoryServiceBean!edu.osu.cse5234.business.view.InventoryService");
+					"java:global/MyBook-InventoryManagement-EJBEAR/MyBook-InventoryManagement-EJB/InventoryServiceBean!edu.osu.cse5234.business.view.InventoryService");
 		} catch (NamingException ne) {
 				throw new RuntimeException(ne);
 		}
-
 	}
 	
 	public static OrderProcessingServiceBean getOrderProcessingService() {

@@ -24,13 +24,13 @@ public class OrderProcessingServiceBean {
     }
     
     public String processOrder(Order order) {
-    	InventoryService invService = ServiceLocator.getInventoryService();
+    	InventoryService invService = ServiceLocator.InventoryService();
     	invService.validateQuantity(order.getItems());
     	invService.updateInventory(order.getItems());
     	return new Random().nextInt(1000000) + "";
     }
     
     public boolean validateItemAvailability(Order order) {
-    	return ServiceLocator.getInventoryService().validateQuantity(order.getItems());
+    	return ServiceLocator.InventoryService().validateQuantity(order.getItems());
     }
 }

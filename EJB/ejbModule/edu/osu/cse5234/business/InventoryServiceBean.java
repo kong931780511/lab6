@@ -23,14 +23,15 @@ public class InventoryServiceBean implements InventoryService {
     }
 
     public Inventory getAvailableInventory() {
-		ArrayList<Item> items = new ArrayList<>();
-		items.add(new Item("CPP", "80", "0"));
-		items.add(new Item("Python", "70", "0"));
-		items.add(new Item("Java", "60", "0"));
-		items.add(new Item("JS", "20", "0"));
-		items.add(new Item("HTML", "10", "0"));
+		//ArrayList<Item> items = new ArrayList<>();
 		Inventory inventory=new Inventory();
-		inventory.setItems(items);
+		inventory.addItem(new Item("CPP", "80", "0"));
+		inventory.addItem(new Item("Python", "70", "0"));
+		inventory.addItem(new Item("Java", "60", "0"));
+		inventory.addItem(new Item("JS", "20", "0"));
+		inventory.addItem(new Item("HTML", "10", "0"));
+		//Inventory inventory=new Inventory();
+		//inventory.addItem(items);
 		return inventory;
 	}
 	public boolean validateQuantity(List<Item> items) {
