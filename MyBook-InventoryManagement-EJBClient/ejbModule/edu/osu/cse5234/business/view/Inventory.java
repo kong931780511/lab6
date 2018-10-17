@@ -2,6 +2,7 @@ package edu.osu.cse5234.business.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Inventory implements Serializable{
 
@@ -13,15 +14,16 @@ public class Inventory implements Serializable{
 		items = new ArrayList<Item>();
 	}
 	
-	public ArrayList<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 
-	public void addItem(Item item) {
-		items.add(item);
+	
+	
+	
+	private List<Item> items;
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
-	
-	
-	private ArrayList<Item> items;
 
 }

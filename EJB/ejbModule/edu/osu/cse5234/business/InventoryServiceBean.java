@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Session Bean implementation class InventoryServiceBean
@@ -23,17 +25,14 @@ public class InventoryServiceBean implements InventoryService {
     public InventoryServiceBean() {
         // TODO Auto-generated constructor stub
     }
-
+    public static final String MY_QUERY = "Select i from Item i";
+    @PersistenceContext
+    EntityManager entityManager;
     public Inventory getAvailableInventory() {
 		//ArrayList<Item> items = new ArrayList<>();
+    	List<Item> items= entityManager.createQuery(MY_QUERY, Item.class).getResultList();  
 		Inventory inventory=new Inventory();
-		inventory.addItem(new Item("CPP", "80", "0"));
-		inventory.addItem(new Item("Python", "70", "0"));
-		inventory.addItem(new Item("Java", "60", "0"));
-		inventory.addItem(new Item("JS", "20", "0"));
-		inventory.addItem(new Item("HTML", "10", "0"));
-		//Inventory inventory=new Inventory();
-		//inventory.addItem(items);
+		inventory.setItems(items);
 		return inventory;
 	}
 	public boolean validateQuantity(List<Item> items) {

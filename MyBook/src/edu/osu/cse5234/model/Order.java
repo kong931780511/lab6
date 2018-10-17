@@ -21,7 +21,7 @@ public class Order {
 		items.set(index, item);
 	}
 	
-	public void addItems(Item item) {
+	public void addItem(Item item) {
 		items.add(item);
 	}
 	private ArrayList<Item> items;
