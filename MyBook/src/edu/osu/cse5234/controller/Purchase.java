@@ -26,7 +26,7 @@ public class Purchase {
 			Order order = new Order();
 			Inventory inventory = ServiceLocator.InventoryService().getAvailableInventory();
 			for (Item item:inventory.getItems()) {
-				order.addItems(item);
+				order.addItem(item);
 			}
 			//order.setItems(order);
 			request.setAttribute("order", order);

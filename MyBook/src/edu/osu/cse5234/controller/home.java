@@ -17,15 +17,15 @@ public class home {
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		Order order = new Order();
-		ArrayList<Item> items = new ArrayList<>();
-		items.add(new Item("CPP", "80", "0"));
-		items.add(new Item("Python", "70", "0"));
-		items.add(new Item("Java", "60", "0"));
-		items.add(new Item("JS", "20", "0"));
-		items.add(new Item("HTML", "10", "0"));
-		order.setItems(items);
-		request.setAttribute("order", order);
+//		Order order = new Order();
+//		ArrayList<Item> items = new ArrayList<>();
+//		items.add(new Item("CPP", "80", "0"));
+//		items.add(new Item("Python", "70", "0"));
+//		items.add(new Item("Java", "60", "0"));
+//		items.add(new Item("JS", "20", "0"));
+//		items.add(new Item("HTML", "10", "0"));
+//		order.setItems(items);
+//		request.setAttribute("order", order);
 		return "home";
 	}
 	

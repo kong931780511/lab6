@@ -54,8 +54,9 @@ public class Order {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	public String getEmailAddress() {
-		return emailAddress;
+	
+	public void addItem(Item item) {
+		items.add(item);
 	}
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
