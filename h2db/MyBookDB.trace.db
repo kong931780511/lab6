@@ -223,3 +223,28 @@ create table CUSTOMER_ORDER (ID int auto_increment primary key, CUSTOMER_NAME va
 	at org.h2.server.web.WebThread.process(WebThread.java:165)
 	at org.h2.server.web.WebThread.run(WebThread.java:90)
 	at java.lang.Thread.run(Thread.java:748)
+2018-10-22 13:54:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE PAYMENT_INFO
+DROP[*] TABLE SHIPPING_INFO"; SQL statement:
+DROP TABLE PAYMENT_INFO
+DROP TABLE SHIPPING_INFO [42000-197]
+2018-10-22 13:54:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE PAYMENT_INFO
+DROP[*] TABLE SHIPPING_INFO"; SQL statement:
+DROP TABLE PAYMENT_INFO
+DROP TABLE SHIPPING_INFO [42000-197]
+2018-10-22 13:54:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE PAYMENT_INFO
+DROP[*] TABLE SHIPPING_INFO"; SQL statement:
+DROP TABLE PAYMENT_INFO
+DROP TABLE SHIPPING_INFO [42000-197]
+2018-10-22 13:54:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE PAYMENT_INFO
+DROP[*] TABLE SHIPPING_INFO"; SQL statement:
+DROP TABLE PAYMENT_INFO
+DROP TABLE SHIPPING_INFO [42000-197]
+2018-10-22 13:54:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE PAYMENT_INFO
+DROP[*] TABLE SHIPPING_INFO"; SQL statement:
+DROP TABLE PAYMENT_INFO
+DROP TABLE SHIPPING_INFO [42000-197]

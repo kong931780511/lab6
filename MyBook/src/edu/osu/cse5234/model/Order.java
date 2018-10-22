@@ -30,6 +30,9 @@ public class Order {
 	@Column(name="CUSTOMER_EMAIL")
 	private String emailAddress;
 	
+	@Column(name="STATUS")
+	private String status;
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="CUSTOMER_ORDER_ID_FK")
 	private List<LineItem> lineItems;
@@ -54,9 +57,8 @@ public class Order {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	
-	public void addItem(Item item) {
-		items.add(item);
+	public String getEmailAddress(){
+		return this.emailAddress;
 	}
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
@@ -79,6 +81,10 @@ public class Order {
 	public void setShippingInfo(ShippingInfo shippingInfo) {
 		this.shippingInfo = shippingInfo;
 	}
-	
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
