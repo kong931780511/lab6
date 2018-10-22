@@ -27,16 +27,16 @@
   	Order order=(Order)(session.getAttribute("order"));
     double totalPrice=0;
     
-    for (Item item : order.getItems()){
-    	if(item.getQuantityFields() != "0"){%>
+    for (LineItem item : order.getLineItems()){
+    	if(item.getQuantity() > 0){%>
     	<tr>
-    		<td><%=item.getName() %></td>
+    		<td><%=item.getItemName() %></td>
     		<td><%=item.getPrice() %></td>
-    		<td><%=item.getQuantityFields() %></td>
+    		<td><%=item.getQuantity() %></td>
     		
     		</tr>
     	<% 
-    	  totalPrice+= Integer.parseInt(item.getPrice())* Integer.parseInt(item.getQuantityFields());
+    	  totalPrice+= item.getPrice()* item.getQuantity();
     	}
     }
     
@@ -72,10 +72,6 @@
   %>
   <table class="table">
 		<tr>
-			<td>Name</td>
-			<td><%=shippingInfo.getName() %></td>
-		</tr>
-		<tr>
 			<td>addressLine1</td>
 			<td><%=shippingInfo.getAddressLine1() %></td>
 		</tr>
@@ -98,6 +94,14 @@
 		<tr>
 			<td>Zip Code</td>
 			<td><%=shippingInfo.getZip() %></td>
+		</tr>
+		<tr>
+			<td>Country</td>
+			<td><%=shippingInfo.getCountry() %></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><%=shippingInfo.getEmail() %></td>
 		</tr>
 		</tr>
 

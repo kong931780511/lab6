@@ -17,10 +17,13 @@ public class Item implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
+	
 	@Column(name="NAME")
 	private String name;
+	
 	@Column(name="UNIT_PRICE")
 	private double unitPrice;
+	
 	public double getUnitPrice() {
 		return unitPrice;
 	}
@@ -56,5 +59,14 @@ public class Item implements Serializable{
 		this.name = name;
 	}
 	
+	@Column(name="ITEM_NUMBER")
+	private int number;
+
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	
 }

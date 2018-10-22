@@ -35,7 +35,13 @@ public class InventoryServiceBean implements InventoryService {
 		inventory.setItems(items);
 		return inventory;
 	}
-	public boolean validateQuantity(List<Item> items) {
+	public boolean validateQuantity(List<Item> orderItems) {
+		List<Item> inventoryItems = getAvailableInventory().getItems();
+		for(int i=0; i < orderItems.size(); i++) {
+			if(orderItems.get(i).getAvailableQuantity() > inventoryItems.get(i).getAvailableQuantity()) {
+				return false;
+			}
+		}
 		return true;
 	}
 	public boolean updateInventory(List<Item> items) {

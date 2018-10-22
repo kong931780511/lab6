@@ -22,10 +22,6 @@
     <table class="table">
     <caption>Shipping Info</caption>
 		<tr>
-			<td>Name</td>
-			<td><form:input class="form-control" required="true" path="name"  /></td>
-		</tr>
-		<tr>
 			<td>addressLine1</td>
 			<td><form:input class="form-control" required="true" path="addressLine1"  /></td>
 		</tr>
@@ -44,6 +40,14 @@
 		<tr>
 			<td>Zip Code</td>
 			<td><form:input class="form-control" required="true" path="zip"  /></td>
+		</tr>
+		<tr>
+			<td>Country</td>
+			<td><form:input class="form-control" required="true" path="country"  /></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><form:input class="form-control" required="true" path="email"  /></td>
 		</tr>
 
 	  <tr>

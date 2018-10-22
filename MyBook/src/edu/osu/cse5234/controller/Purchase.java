@@ -31,7 +31,7 @@ public class Purchase {
 			for (Item item:inventory.getItems()) {
 				LineItem i = new LineItem();
 				i.setItemName(item.getName());
-				i.setItemNumber(item.getId());
+				i.setItemNumber(item.getNumber());
 				i.setPrice(item.getUnitPrice());
 				i.setQuantity(0);
 				lineItems.add(i);

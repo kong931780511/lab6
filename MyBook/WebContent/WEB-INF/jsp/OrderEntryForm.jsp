@@ -14,13 +14,13 @@
 <form:form modelAttribute="order" method="post" action="/MyBook/purchase/submitItems">
     <table class="table">
         	<td>Product Name</td><td>Price</td><td>Quantity</td>
-	<c:forEach items="${order.items}" var="item" varStatus="loop">
+	<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
 		<tr>
-			<td><c:out value="${item.name}"></c:out></td>
-			<td><c:out value="$${item.price}"></c:out></td>
-			<td><form:input class="form-control" type="number" min="0" required="true" path="items[${loop.index}].QuantityFields" /></td>
-			<td hidden="true"><form:input path="items[${loop.index}].name" value="${item.name}" /></td>
-			<td hidden="true"><form:input path="items[${loop.index}].price" value="${item.price}"/></td>
+			<td><c:out value="${lineItem.itemName}"></c:out></td>
+			<td><c:out value="$${lineItem.price}"></c:out></td>
+			<td><form:input class="form-control" type="number" min="0" required="true" path="lineItems[${loop.index}].quantity" /></td>
+			<td hidden="true"><form:input path="lineItems[${loop.index}].itemName" value="${lineItem.itemName}" /></td>
+			<td hidden="true"><form:input path="lineItems[${loop.index}].price" value="${lineItem.price}"/></td>
 		</tr>
 	</c:forEach>
     <tr>

@@ -25,11 +25,11 @@
     <caption>Payment Info</caption>
 		<tr>
 			<td>Credit Card Number</td>
-			<td><form:input  class="form-control" required="true" path="creditCardNumber"  /></td>
+			<td><form:input  class="form-control" required="true" path="CreditCardNumber"  /></td>
 		</tr>
 		<tr>
 			<td>Expiration Date</td>
-			<td><form:input class="form-control" type="date" required="true" path="expirationDate"  /></td>
+			<td><form:input class="form-control" type="date" required="true" path="ExpirationDate"  /></td>
 		</tr>
 		<tr>
 			<td>CVV Code</td>
