@@ -4,10 +4,13 @@ import java.util.Random;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.util.ServiceLocator;
+
 
 /**
  * Session Bean implementation class OrderProcessingServiceBean
@@ -15,7 +18,10 @@ import edu.osu.cse5234.util.ServiceLocator;
 @Stateless
 @LocalBean
 public class OrderProcessingServiceBean {
-
+	@PersistenceContext
+	EntityManager entityManager;
+	
+	public static final String MY_QUERY = "Select i from Item i";
     /**
      * Default constructor. 
      */

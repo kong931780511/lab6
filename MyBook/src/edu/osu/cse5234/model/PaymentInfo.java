@@ -1,10 +1,21 @@
 package edu.osu.cse5234.model;
 
 public class PaymentInfo {
+	
+	public PaymentInfo() {}
+	
+	private int id;
 	private String CreditCardNumber;
 	private String ExpirationDate;
 	private String cvvCode;
 	private String CardHolderName;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getCreditCardNumber() {
 		return CreditCardNumber;
 	}
