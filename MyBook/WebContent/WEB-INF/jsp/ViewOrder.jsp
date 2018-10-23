@@ -31,8 +31,7 @@
     	<tr>
     		<td><%=item.getItemName() %></td>
     		<td><%=item.getPrice() %></td>
-    		<td><%=item.getQuantity() %></td>
-    		
+	<td><%=item.getQuantity() %></td>
     		</tr>
     	<%  
     	  totalPrice+=item.getPrice()*item.getQuantity();

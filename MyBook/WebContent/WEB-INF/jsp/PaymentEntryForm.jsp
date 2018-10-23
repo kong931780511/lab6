@@ -23,7 +23,7 @@
 
     <table class="table">
     <caption>Payment Info</caption>
-		<tr>
+		<tr> 
 			<td>Credit Card Number</td>
 			<td><form:input  class="form-control" required="true" path="CreditCardNumber"  /></td>
 		</tr>
@@ -33,7 +33,7 @@
 		</tr>
 		<tr>
 			<td>CVV Code</td>
-			<td><form:input class="form-control" type="password" required="true" path="cvvCode"  /></td>
+			<td><form:input class="form-control" type="password" maxlength="3"  required="true" path="cvvCode"  /></td>
 		</tr>
 		<tr>
 			<td>Card Holder Name</td>

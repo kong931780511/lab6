@@ -82,8 +82,13 @@ public class Purchase {
 		return "ViewOrder";
 	}
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
-	public String confirmOrder(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request) {
-		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder((Order)request.getSession().getAttribute("order"));
+	public String confirmOrder( HttpServletRequest request) {
+		Order order=(Order)request.getSession().getAttribute("order");
+		order.setPaymentInfo((PaymentInfo)request.getSession().getAttribute("paymentInfo"));
+		order.setShippingInfo((ShippingInfo)request.getSession().getAttribute("shippingInfo"));
+		order.setEmailAddress("123456789@gmail.com");
+		order.setCustomerName("James Bond");
+		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder(order);
 		request.getSession().setAttribute("confirmNum", confirmNum);
 		return "redirect:/purchase/viewConfirmation";
 	}

@@ -21,6 +21,7 @@
 			<td><form:input class="form-control" type="number" min="0" required="true" path="lineItems[${loop.index}].quantity" /></td>
 			<td hidden="true"><form:input path="lineItems[${loop.index}].itemName" value="${lineItem.itemName}" /></td>
 			<td hidden="true"><form:input path="lineItems[${loop.index}].price" value="${lineItem.price}"/></td>
+			<td hidden="true"><form:input path="lineItems[${loop.index}].itemNumber" value="${lineItem.itemNumber}"/></td>
 		</tr>
 	</c:forEach>
     <tr>
