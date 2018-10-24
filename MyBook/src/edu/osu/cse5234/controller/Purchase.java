@@ -84,10 +84,12 @@ public class Purchase {
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder( HttpServletRequest request) {
 		Order order=(Order)request.getSession().getAttribute("order");
-		order.setPaymentInfo((PaymentInfo)request.getSession().getAttribute("paymentInfo"));
-		order.setShippingInfo((ShippingInfo)request.getSession().getAttribute("shippingInfo"));
-		order.setEmailAddress("123456789@gmail.com");
-		order.setCustomerName("James Bond");
+		ShippingInfo shipping = (ShippingInfo)request.getSession().getAttribute("shippingInfo");
+		PaymentInfo payment = (PaymentInfo)request.getSession().getAttribute("paymentInfo");
+		order.setPaymentInfo(payment);
+		order.setShippingInfo(shipping);
+		order.setEmailAddress(shipping.getEmail());
+		order.setCustomerName(" ");
 		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder(order);
 		request.getSession().setAttribute("confirmNum", confirmNum);
 		return "redirect:/purchase/viewConfirmation";
