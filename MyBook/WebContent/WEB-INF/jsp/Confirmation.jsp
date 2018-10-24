@@ -17,7 +17,7 @@
 <jsp:include page='header.jsp'/> 
 <h2>Your Confirmation is <%=session.getAttribute("confirmNum") %></h2>
 <h3>Order Info</h3>
-	<table class="table" >
+	<table class="table" style="margin:10px 10px">
 	<tr>
     <th>Book Name</th>
     <th>Price</th> 
@@ -47,7 +47,7 @@
   <%
   PaymentInfo paymentInfo=(PaymentInfo)(session.getAttribute("paymentInfo"));
   %>
-  <table class="table">
+  <table class="table" style="margin:10px 10px">
 		<tr>
 			<td>Credit Card Number</td>
 			<td><%=paymentInfo.getCreditCardNumber() %></td>
@@ -70,7 +70,7 @@
    <%
   ShippingInfo shippingInfo=(ShippingInfo)(session.getAttribute("shippingInfo"));
   %>
-  <table class="table">
+  <table class="table" style="margin:10px 10px">
 		<tr>
 			<td>addressLine1</td>
 			<td><%=shippingInfo.getAddressLine1() %></td>

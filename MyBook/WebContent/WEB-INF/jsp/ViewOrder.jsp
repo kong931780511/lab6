@@ -45,7 +45,7 @@
   <%
   PaymentInfo paymentInfo=(PaymentInfo)(session.getAttribute("paymentInfo"));
   %>
-  <table class="table">
+  <table class="table" style="margin:10px 10px">
 		<tr>
 			<td>Credit Card Number</td>
 			<td><%=paymentInfo.getCreditCardNumber() %></td>
@@ -68,26 +68,22 @@
    <%
   ShippingInfo shippingInfo=(ShippingInfo)(session.getAttribute("shippingInfo"));
   %>
-  <table class="table">
+  <table class="table" style="margin:10px 10px">
 		<tr>
 			<td>addressLine1</td>
 			<td><%=shippingInfo.getAddressLine1() %></td>
-		</tr>
 		</tr>
 		<tr>
 			<td>addressLine2</td>
 			<td><%=shippingInfo.getAddressLine2() %></td>
 		</tr>
-		</tr>
 		<tr>
 			<td>City</td>
 			<td><%=shippingInfo.getCity() %></td>
 		</tr>
-		</tr>
 		<tr>
 			<td>State</td>
 			<td><%=shippingInfo.getState() %></td>
-		</tr>
 		</tr>
 		<tr>
 			<td>Zip Code</td>
@@ -101,14 +97,13 @@
 			<td>Email</td>
 			<td><%=shippingInfo.getEmail() %></td>
 		</tr>
-		</tr>
-
 	
-
     </table>
-   <form method="post" action="confirmOrder">
-  <input class="btn btn-primary" type="submit" value="Confirm"></td>
+  <form  method="post" action="confirmOrder">
+  <input style="margin:20px 20px" class="btn btn-primary" type="submit" value="Confirm">
 </form>
+
+
 <jsp:include page='footer.jsp'/> 
 </body>
 </html>
