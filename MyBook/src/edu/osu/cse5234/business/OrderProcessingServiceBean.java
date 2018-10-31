@@ -49,7 +49,10 @@ public class OrderProcessingServiceBean {
     	creditCardPayment.setCvvCode(paymentInfo.getCvvCode());
     	creditCardPayment.setExpirationDate(paymentInfo.getExpirationDate());
     	creditCardPayment.setPaymentAmount(10);
-    	service.getPaymentProcessorPort().processPayment(creditCardPayment); 
+    	String res = service.getPaymentProcessorPort().processPayment(creditCardPayment); 
+    	if (Integer.parseInt(res) < 0) {
+    		return "XXXXXXXX";
+    	}
     	InventoryService invService = ServiceLocator.InventoryService();
     	invService.validateQuantity(lineItemsToItems(order.getLineItems()));
     	invService.updateInventory(lineItemsToItems(order.getLineItems()));

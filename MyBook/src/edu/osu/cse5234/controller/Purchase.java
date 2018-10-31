@@ -91,6 +91,9 @@ public class Purchase {
 		order.setEmailAddress(shipping.getEmail());
 		order.setCustomerName(" ");
 		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder(order, payment);
+		if (confirmNum == "XXXXXXXX") {
+			return "redirect:/";
+		}
 		request.getSession().setAttribute("confirmNum", confirmNum);
 		return "redirect:/purchase/viewConfirmation";
 	}
