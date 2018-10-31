@@ -30,6 +30,8 @@ public class PaymentInfo {
 	@Column(name="HOLDER_NAME")
 	private String CardHolderName;
 	
+	@Column(name="CONFIRM_NUM")
+	private String confirmationNumber;
 	public int getId() {
 		return id;
 	}
@@ -59,5 +61,11 @@ public class PaymentInfo {
 	}
 	public void setCardHolderName(String cardHolderName) {
 		this.CardHolderName = cardHolderName;
+	}
+	public String getConfirmationNumber() {
+		return confirmationNumber;
+	}
+	public void setConfirmationNumber(String confirmationNumber) {
+		this.confirmationNumber = confirmationNumber;
 	}
 }

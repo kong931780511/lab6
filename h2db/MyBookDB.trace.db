@@ -772,3 +772,6 @@ SELECT * CUSTOMER_ORDER ORDER BY CUSTOMER_NAME [42000-197]
 2018-10-24 16:06:53 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * CUSTOMER_ORDER[*] ORDER BY CUSTOMER_NAME"; SQL statement:
 SELECT * CUSTOMER_ORDER ORDER BY CUSTOMER_NAME [42000-197]
+2018-10-31 16:20:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM CUSTOMER_ORDER BY ID[*]"; SQL statement:
+SELECT * FROM CUSTOMER_ORDER BY ID [42000-197]

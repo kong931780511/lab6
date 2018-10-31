@@ -8,10 +8,15 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.xml.ws.WebServiceRef;
+
+import com.chase.payment.CreditCardPayment;
+import com.chase.payment.PaymentProcessorService;
 
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.model.Order;
+import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.util.ServiceLocator;
 import edu.osu.cse5234.business.view.Item;
 
@@ -19,6 +24,7 @@ import edu.osu.cse5234.business.view.Item;
 /**
  * Session Bean implementation class OrderProcessingServiceBean
  */
+
 @Stateless
 @LocalBean
 public class OrderProcessingServiceBean {
@@ -32,14 +38,27 @@ public class OrderProcessingServiceBean {
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
     }
+    @WebServiceRef(wsdlLocation = 
+    		"http://localhost:9080/ChaseBankApplication/PaymentProcessorService?wsdl")
+    		private PaymentProcessorService service;
     
-    public String processOrder(Order order) {
+    public String processOrder(Order order, PaymentInfo paymentInfo) {
+    	CreditCardPayment creditCardPayment = new CreditCardPayment();
+    	creditCardPayment.setCardHolderName(paymentInfo.getCardHolderName());
+    	creditCardPayment.setCreditCardNumber(paymentInfo.getCreditCardNumber());
+    	creditCardPayment.setCvvCode(paymentInfo.getCvvCode());
+    	creditCardPayment.setExpirationDate(paymentInfo.getExpirationDate());
+    	creditCardPayment.setPaymentAmount(10);
+    	service.getPaymentProcessorPort().processPayment(creditCardPayment); 
     	InventoryService invService = ServiceLocator.InventoryService();
     	invService.validateQuantity(lineItemsToItems(order.getLineItems()));
     	invService.updateInventory(lineItemsToItems(order.getLineItems()));
+    	String confirmNum = new Random().nextInt(1000000) + "";
+    	paymentInfo.setConfirmationNumber(confirmNum);
+    	order.setPaymentInfo(paymentInfo);
     	entityManager.persist(order);
     	entityManager.flush();
-    	return new Random().nextInt(1000000) + "";
+    	return confirmNum;
     }
     
     public boolean validateItemAvailability(Order order) {

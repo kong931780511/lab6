@@ -86,11 +86,11 @@ public class Purchase {
 		Order order=(Order)request.getSession().getAttribute("order");
 		ShippingInfo shipping = (ShippingInfo)request.getSession().getAttribute("shippingInfo");
 		PaymentInfo payment = (PaymentInfo)request.getSession().getAttribute("paymentInfo");
-		order.setPaymentInfo(payment);
+		//order.setPaymentInfo(payment);
 		order.setShippingInfo(shipping);
 		order.setEmailAddress(shipping.getEmail());
 		order.setCustomerName(" ");
-		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder(order);
+		String confirmNum = ServiceLocator.getOrderProcessingService().processOrder(order, payment);
 		request.getSession().setAttribute("confirmNum", confirmNum);
 		return "redirect:/purchase/viewConfirmation";
 	}
