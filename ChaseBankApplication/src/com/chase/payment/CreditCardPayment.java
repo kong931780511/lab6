@@ -1,44 +1,26 @@
-package edu.osu.cse5234.model;
+package com.chase.payment;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name="PAYMENT_INFO")
-public class PaymentInfo {
-	
-	public PaymentInfo() {}
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+
+public class CreditCardPayment implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CreditCardPayment() {}
+
 	private int id;
-	
-	@Column(name="CARD_NUM")
+
 	private String CreditCardNumber;
-	
-	@Column(name="EXP_DATE")
+
 	private String ExpirationDate;
-	
-	@Column(name="CVV")
+
 	private String cvvCode;
-	
-	@Column(name="HOLDER_NAME")
+
 	private String CardHolderName;
 	
-	@Column(name="CONFIRMATION_NUM")
-	private String ConfirmationNumber;
-	
-	public String getConfirmationNumber() {
-		return ConfirmationNumber;
-	}
-	public void setConfirmationNumber(String confirmationNumber) {
-		ConfirmationNumber = confirmationNumber;
-	}
 	public int getId() {
 		return id;
 	}
