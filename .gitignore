@@ -1,2 +1,5 @@
 build/
 .classpath
+MyBook/WebContent/WEB-INF/classes/
+*/bin/
+.DS_Store
