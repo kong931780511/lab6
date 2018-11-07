@@ -1,11 +1,18 @@
 package edu.osu.cse5234.business;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSConnectionFactory;
+import javax.jms.JMSContext;
+import javax.jms.Queue;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.EntityManager;
@@ -24,12 +31,22 @@ import edu.osu.cse5234.util.ServiceLocator;
 import edu.osu.cse5234.business.view.Item;
 
 
+@Resource(name="jms/emailQCF", lookup="jms/emailQCF", type=ConnectionFactory.class) 
+
 /**
  * Session Bean implementation class OrderProcessingServiceBean
  */
 @Stateless
 @LocalBean
 public class OrderProcessingServiceBean {
+	
+	@Inject
+	@JMSConnectionFactory("java:comp/env/jms/emailQCF")
+	private JMSContext jmsContext;
+	
+	@Resource(lookup="jms/emailQ")
+	private Queue queue;
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -61,6 +78,7 @@ public class OrderProcessingServiceBean {
 	    	order.getPaymentInfo().setConfirmationNumber(confirmation);
 	    	entityManager.persist(order);
 	    	entityManager.flush();
+	    	notifyUser(order.getEmailAddress());
 	    	ShippingInitiationClient client = new ShippingInitiationClient(shippingResourcesURI);
 	    	JsonObject requestJson = Json.createObjectBuilder()
 	    			.add("Organization", "MyBook")
@@ -77,6 +95,16 @@ public class OrderProcessingServiceBean {
     
     public boolean validateItemAvailability(Order order) {
     	return ServiceLocator.InventoryService().validateQuantity(lineItemsToItems(order.getLineItems()));
+    }
+    
+    private void notifyUser(String customerEmail) {
+    	String message = customerEmail + ":" +
+    	       "Your order was successfully submitted. " + 
+    	      "You will hear from us when items are shipped. " + 
+    	       new Date();
+    	System.out.println("Sending message: " + message);
+    	jmsContext.createProducer().send(queue, message);
+    	System.out.println("Message Sent!");
     }
     
     private List<Item> lineItemsToItems(List<LineItem> lineItems) {
