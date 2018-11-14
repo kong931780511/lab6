@@ -7,7 +7,7 @@ public class CreditCardPayment implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1077674765585077985L;
 
 	public CreditCardPayment() {}
 
